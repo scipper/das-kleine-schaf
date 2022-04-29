@@ -1,9 +1,11 @@
-name: CI
+name: build
 
 on:
   push:
     branches:
       - "*"
+    branches-ignore:
+      - "master"
   pull_request:
     branches:
       - "*"
