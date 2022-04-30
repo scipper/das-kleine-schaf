@@ -3,44 +3,30 @@ import "./sheep.scss";
 
 export class Sheep {
 
-  private sheep?: HTMLElement | null;
+  public static readonly VELOCITY = 15;
+
+  private position = {top: 0, left: 0};
 
   constructor(private inputHandler: InputHandler) {
-    // element selection
-    this.selectElement();
   }
 
   update() {
     if(this.inputHandler.isLeftPressed()) {
-      this.decrease("left");
+      this.position.left -= Sheep.VELOCITY;
     }
     if(this.inputHandler.isRightPressed()) {
-      this.increase("left");
+      this.position.left += Sheep.VELOCITY;
     }
     if(this.inputHandler.isUpPressed()) {
-      this.decrease("top");
+      this.position.top -= Sheep.VELOCITY;
     }
     if(this.inputHandler.isDownPressed()) {
-      this.increase("top");
+      this.position.top += Sheep.VELOCITY;
     }
   }
 
-  private selectElement() {
-    this.sheep = document.querySelector("#sheep")!;
-  }
-
-  // move
-  private increase(direction: "left" | "top") {
-    if(this.sheep) {
-      this.sheep.style[direction] = (Number(this.sheep.style[direction].replace(/(px)$/, "")) + 15) + "px";
-    }
-  }
-
-  // move
-  private decrease(direction: "left" | "top") {
-    if(this.sheep) {
-      this.sheep.style[direction] = (Number(this.sheep.style[direction].replace(/(px)$/, "")) - 15) + "px";
-    }
+  getPosition() {
+    return {...this.position};
   }
 
 }
