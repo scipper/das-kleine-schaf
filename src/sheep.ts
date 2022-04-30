@@ -1,37 +1,46 @@
+import {InputHandler} from "./input/input-handler";
 import "./sheep.scss";
 
 export class Sheep {
 
-  private readonly sheep: HTMLElement;
-  private readonly keyDownListener: (event: KeyboardEvent) => void;
+  private sheep?: HTMLElement | null;
 
-  constructor() {
-    this.sheep = document.querySelector("#sheep")!;
-    this.keyDownListener = (event: KeyboardEvent) => this.keyDown(event);
-    document.addEventListener("keydown", this.keyDownListener);
+  constructor(private inputHandler: InputHandler) {
+    // element selection
+    this.selectElement();
   }
 
-  private keyDown(event: KeyboardEvent) {
-    if(event.code === "ArrowRight") {
-      this.increase("left");
-    }
-    if(event.code === "ArrowLeft") {
+  update() {
+    if(this.inputHandler.isLeftPressed()) {
       this.decrease("left");
     }
-    if(event.code === "ArrowUp") {
+    if(this.inputHandler.isRightPressed()) {
+      this.increase("left");
+    }
+    if(this.inputHandler.isUpPressed()) {
       this.decrease("top");
     }
-    if(event.code === "ArrowDown") {
+    if(this.inputHandler.isDownPressed()) {
       this.increase("top");
     }
   }
 
-  private increase(direction: "left" | "top") {
-    this.sheep.style[direction] = (Number(this.sheep.style[direction].replace(/(px)$/, "")) + 15) + "px";
+  private selectElement() {
+    this.sheep = document.querySelector("#sheep")!;
   }
 
+  // move
+  private increase(direction: "left" | "top") {
+    if(this.sheep) {
+      this.sheep.style[direction] = (Number(this.sheep.style[direction].replace(/(px)$/, "")) + 15) + "px";
+    }
+  }
+
+  // move
   private decrease(direction: "left" | "top") {
-    this.sheep.style[direction] = (Number(this.sheep.style[direction].replace(/(px)$/, "")) - 15) + "px";
+    if(this.sheep) {
+      this.sheep.style[direction] = (Number(this.sheep.style[direction].replace(/(px)$/, "")) - 15) + "px";
+    }
   }
 
 }
