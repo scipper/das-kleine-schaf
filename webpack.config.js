@@ -11,8 +11,9 @@ const config = {
     },
     devServer: {
         open: true,
-        host: "localhost",
+        host: "localhost"
     },
+    devtool: isProduction ? false : "eval-source-map",
     plugins: [
         new HtmlWebpackPlugin({
             template: "index.html",
