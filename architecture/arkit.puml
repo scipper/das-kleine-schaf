@@ -1,0 +1,54 @@
+@startuml
+
+scale max 1920 width
+top to bottom direction
+
+skinparam nodesep 12
+skinparam ranksep 23
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Tahoma
+skinparam defaultFontSize 12
+skinparam roundCorner 6
+skinparam dpi 150
+skinparam arrowColor black
+skinparam arrowThickness 0.5
+skinparam packageTitleAlignment left
+
+' oval
+skinparam usecase {
+  borderThickness 0.5
+}
+
+' rectangle
+skinparam rectangle {
+  borderThickness 0.5
+}
+
+' component
+skinparam component {
+  borderThickness 1
+}
+
+
+rectangle "document-input-handler" as _document_input_handler
+rectangle "input-handler" as _input_handler
+rectangle "key-code" as _key_code
+rectangle "<b>main</b>" as _main
+rectangle "sheep" as _sheep
+rectangle "sheep-element" as _sheep_element
+
+
+_document_input_handler ---> _input_handler
+_document_input_handler ---> _key_code
+_input_handler --> _key_code
+_main --[thickness=1]> _document_input_handler
+_main -[thickness=1]> _sheep
+_main --[thickness=1]> _sheep_element
+_sheep --> _input_handler
+_sheep --> _key_code
+_sheep_element ---> _sheep
+
+@enduml
+
+' View and edit on https://arkit.pro

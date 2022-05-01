@@ -8,7 +8,8 @@
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "watch": "webpack --watch",
-    "serve": "webpack serve"
+    "serve": "webpack serve",
+    "generate-graph": "npx arkit"
   },
   "repository": {
     "type": "git",

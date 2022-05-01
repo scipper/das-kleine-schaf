@@ -1,6 +1,6 @@
 import "./index.scss";
-import {DocumentInputHandler} from "./input/document-input-handler";
 import {Sheep} from "./player/sheep";
+import {DocumentInputHandler} from "./ui/input/document-input-handler";
 import {SheepElement} from "./ui/sheep/sheep-element";
 
 export class DasKleineSchaf {

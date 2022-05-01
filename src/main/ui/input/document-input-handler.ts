@@ -1,5 +1,5 @@
-import {InputHandler} from "./input-handler";
-import {KeyCode} from "./key-code";
+import {InputHandler} from "../../input/input-handler";
+import {KeyCode} from "../../input/key-code";
 
 export class DocumentInputHandler implements InputHandler {
 

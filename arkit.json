@@ -1,0 +1,40 @@
+{
+  "$schema": "https://arkit.js.org/schema.json",
+  "excludePatterns": [
+    "src/test/**",
+    "**/*.spec.*"
+  ],
+  "components": [
+    {
+      "type": "Dependency",
+      "patterns": [
+        "node_modules/*"
+      ]
+    },
+    {
+      "type": "Component",
+      "patterns": [
+        "**/*.ts"
+      ]
+    }
+  ],
+  "output": [
+    {
+      "path": "architecture/arkit.puml",
+      "groups": [
+        {
+          "first": true,
+          "components": [
+            "Component"
+          ]
+        },
+        {
+          "type": "Dependencies",
+          "components": [
+            "Dependency"
+          ]
+        }
+      ]
+    }
+  ]
+}
