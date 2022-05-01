@@ -1,19 +1,27 @@
 import "./index.scss";
 import {DocumentInputHandler} from "./input/document-input-handler";
-import {Sheep} from "./sheep";
-import "./sheep.scss";
+import {Sheep} from "./player/sheep";
+import {SheepElement} from "./ui/sheep/sheep-element";
 
-const inputHandler = new DocumentInputHandler();
-const sheep = new Sheep(inputHandler);
-const sheepElement = document.querySelector("#sheep") as HTMLElement;
+export class DasKleineSchaf {
 
-function animate() {
-  requestAnimationFrame(animate);
+  constructor(private sheepElement: SheepElement) {
+  }
 
-  sheep.update();
-  const sheepPosition = sheep.getPosition();
-  sheepElement.style.left = sheepPosition.left + "px";
-  sheepElement.style.top = sheepPosition.top + "px";
+  public static run() {
+    const inputHandler = new DocumentInputHandler();
+    const sheepElement = new SheepElement(new Sheep(inputHandler));
+
+    const dasKleineSchaf = new DasKleineSchaf(sheepElement);
+    dasKleineSchaf.animate();
+  }
+
+  animate() {
+    requestAnimationFrame(this.animate.bind(this));
+
+    this.sheepElement.updatePosition();
+  }
+
 }
 
-animate();
+DasKleineSchaf.run();
