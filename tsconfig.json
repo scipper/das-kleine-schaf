@@ -3,7 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
-    "module": "es6",
+    "module": "commonjs",
     "target": "es5",
     "allowJs": true,
     "strict": true,
