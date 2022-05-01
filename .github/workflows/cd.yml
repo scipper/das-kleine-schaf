@@ -37,4 +37,4 @@ jobs:
           username: ${{ secrets.SFTP_USER }}
           password: ${{ secrets.SFTP_PASSWORD }}
           localPath: './dist'
-          remotePath: './'
+          remotePath: './daskleineschaf'
