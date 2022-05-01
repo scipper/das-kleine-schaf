@@ -1,10 +1,10 @@
 {
-  "name": "my-webpack-project",
+  "name": "das-kleine-schaf",
   "version": "1.0.0",
-  "description": "My webpack project",
+  "description": "Füttere das kleine Schaf",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "nyc --include=\"src/main/**/*.ts\" mocha --require ts-node/register \"src/test/**/*.spec.ts\"",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "watch": "webpack --watch",
@@ -12,18 +12,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "Z:\\\\git-repos\\\\das-kleine-schaf"
+    "url": "https://github.com/scipper/das-kleine-schaf"
   },
   "author": "Steffen Kowalski",
   "license": "MIT",
   "devDependencies": {
+    "@types/chai": "4.3.0",
+    "@types/mocha": "9.0.0",
     "@webpack-cli/generators": "2.4.2",
+    "chai": "4.3.4",
     "css-loader": "6.7.1",
     "html-webpack-plugin": "^5.5.0",
+    "mocha": "9.1.3",
+    "nyc": "15.1.0",
     "sass": "^1.51.0",
     "sass-loader": "^12.6.0",
     "style-loader": "3.3.1",
     "ts-loader": "^9.2.9",
+    "ts-node": "10.4.0",
     "typescript": "^4.6.4",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",

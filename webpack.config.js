@@ -5,14 +5,15 @@ const isProduction = process.env.NODE_ENV === "production";
 
 
 const config = {
-    entry: "./src/index.ts",
+    entry: "./src/main/index.ts",
     output: {
         path: path.resolve(__dirname, "dist"),
     },
     devServer: {
         open: true,
-        host: "localhost",
+        host: "localhost"
     },
+    devtool: isProduction ? false : "eval-source-map",
     plugins: [
         new HtmlWebpackPlugin({
             template: "index.html",
