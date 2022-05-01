@@ -13,11 +13,11 @@ export class DasKleineSchaf {
     const sheepElement = new SheepElement(new Sheep(inputHandler));
 
     const dasKleineSchaf = new DasKleineSchaf(sheepElement);
-    dasKleineSchaf.animate();
+    dasKleineSchaf.start();
   }
 
-  animate() {
-    requestAnimationFrame(this.animate.bind(this));
+  start() {
+    requestAnimationFrame(this.start.bind(this));
 
     this.sheepElement.updatePosition();
   }
