@@ -1,8 +1,9 @@
 import "./index.scss";
-import {InputHandler} from "./input/input-handler";
+import {DocumentInputHandler} from "./input/document-input-handler";
 import {Sheep} from "./sheep";
+import "./sheep.scss";
 
-const inputHandler = new InputHandler();
+const inputHandler = new DocumentInputHandler();
 const sheep = new Sheep(inputHandler);
 const sheepElement = document.querySelector("#sheep") as HTMLElement;
 

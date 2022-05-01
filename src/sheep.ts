@@ -1,5 +1,5 @@
 import {InputHandler} from "./input/input-handler";
-import "./sheep.scss";
+import {KeyCode} from "./input/key-code";
 
 export class Sheep {
 
@@ -11,16 +11,16 @@ export class Sheep {
   }
 
   update() {
-    if(this.inputHandler.isLeftPressed()) {
+    if(this.inputHandler.getKeyDown(KeyCode.LEFT)) {
       this.position.left -= Sheep.VELOCITY;
     }
-    if(this.inputHandler.isRightPressed()) {
+    if(this.inputHandler.getKeyDown(KeyCode.RIGHT)) {
       this.position.left += Sheep.VELOCITY;
     }
-    if(this.inputHandler.isUpPressed()) {
+    if(this.inputHandler.getKeyDown(KeyCode.UP)) {
       this.position.top -= Sheep.VELOCITY;
     }
-    if(this.inputHandler.isDownPressed()) {
+    if(this.inputHandler.getKeyDown(KeyCode.DOWN)) {
       this.position.top += Sheep.VELOCITY;
     }
   }
