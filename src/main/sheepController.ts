@@ -24,7 +24,20 @@ export class SheepController {
       this.sheep.moveDown();
     }
 
-    this.sheepElement.updatePosition(this.sheep.getPosition());
+    const sheepPosition = this.sheep.getPosition();
+    this.sheepElement.updatePosition(sheepPosition);
+
+    const collectables = [
+      ...document.elementsFromPoint(sheepPosition.left, sheepPosition.top),
+      ...document.elementsFromPoint(sheepPosition.left + 100, sheepPosition.top),
+      ...document.elementsFromPoint(sheepPosition.left, sheepPosition.top + 100),
+      ...document.elementsFromPoint(sheepPosition.left + 100, sheepPosition.top + 100)
+    ];
+    collectables.forEach((collectable) => {
+      if(collectable.classList.contains("collectable")) {
+        collectable.remove();
+      }
+    });
   }
 
 }
