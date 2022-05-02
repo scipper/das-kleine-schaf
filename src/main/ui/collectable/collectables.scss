@@ -1,0 +1,38 @@
+.collectable {
+  display: inline-block;
+  width: 30px;
+  height: 75px;
+  background-color: darkorange;
+  border-top: 5px dashed darkgreen;
+  position: absolute;
+
+  &.c-1 {
+    top: 50%;
+    left: 50%;
+  }
+
+  &.c-2 {
+    top: 20%;
+    left: 70%;
+  }
+
+  &.c-3 {
+    top: 45%;
+    left: 87%;
+  }
+
+  &.c-4 {
+    top: 23%;
+    left: 33%;
+  }
+
+  &.c-5 {
+    top: 56%;
+    left: 33%;
+  }
+
+  &.c-6 {
+    top: 87%;
+    left: 34%;
+  }
+}
