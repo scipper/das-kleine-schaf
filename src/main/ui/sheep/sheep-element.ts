@@ -1,19 +1,16 @@
-import {Sheep} from "../../player/sheep";
 import "./sheep-element.scss";
 
 export class SheepElement {
 
   private sheepElement: HTMLElement;
 
-  constructor(private sheep: Sheep) {
+  constructor() {
     this.sheepElement = document.querySelector("#sheep") as HTMLElement;
   }
 
-  updatePosition() {
-    this.sheep.update();
-    const sheepPosition = this.sheep.getPosition();
-    this.sheepElement.style.left = sheepPosition.left + "px";
-    this.sheepElement.style.top = sheepPosition.top + "px";
+  updatePosition(position: { left: number, top: number }) {
+    this.sheepElement.style.left = position.left + "px";
+    this.sheepElement.style.top = position.top + "px";
   }
 
 }

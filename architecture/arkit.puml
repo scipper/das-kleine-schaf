@@ -4,7 +4,7 @@ scale max 1920 width
 top to bottom direction
 
 skinparam nodesep 12
-skinparam ranksep 23
+skinparam ranksep 24
 skinparam monochrome true
 skinparam shadowing false
 skinparam defaultFontName Tahoma
@@ -37,6 +37,7 @@ rectangle "key-code" as _key_code
 rectangle "<b>main</b>" as _main
 rectangle "sheep" as _sheep
 rectangle "sheep-element" as _sheep_element
+rectangle "sheepController" as _sheepController
 
 
 _document_input_handler ---> _input_handler
@@ -45,9 +46,11 @@ _input_handler --> _key_code
 _main --[thickness=1]> _document_input_handler
 _main -[thickness=1]> _sheep
 _main --[thickness=1]> _sheep_element
-_sheep --> _input_handler
-_sheep --> _key_code
-_sheep_element ---> _sheep
+_main -[thickness=1]> _sheepController
+_sheepController --> _input_handler
+_sheepController --> _key_code
+_sheepController --> _sheep
+_sheepController --> _sheep_element
 
 @enduml
 
