@@ -1,6 +1,6 @@
 export class Sheep {
 
-  public static readonly VELOCITY = 15;
+  public static readonly VELOCITY = 5;
 
   private position = {top: 0, left: 0};
 

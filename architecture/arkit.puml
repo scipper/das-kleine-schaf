@@ -31,26 +31,29 @@ skinparam component {
 }
 
 
+rectangle "collectable-handler" as _collectable_handler
 rectangle "document-input-handler" as _document_input_handler
+rectangle "gameController" as _gameController
 rectangle "input-handler" as _input_handler
 rectangle "key-code" as _key_code
 rectangle "<b>main</b>" as _main
 rectangle "sheep" as _sheep
 rectangle "sheep-element" as _sheep_element
-rectangle "sheepController" as _sheepController
 
 
 _document_input_handler ---> _input_handler
 _document_input_handler ---> _key_code
+_gameController --> _collectable_handler
+_gameController --> _input_handler
+_gameController --> _key_code
+_gameController --> _sheep
+_gameController --> _sheep_element
 _input_handler --> _key_code
+_main --[thickness=1]> _collectable_handler
 _main --[thickness=1]> _document_input_handler
+_main -[thickness=1]> _gameController
 _main -[thickness=1]> _sheep
 _main --[thickness=1]> _sheep_element
-_main -[thickness=1]> _sheepController
-_sheepController --> _input_handler
-_sheepController --> _key_code
-_sheepController --> _sheep
-_sheepController --> _sheep_element
 
 @enduml
 
