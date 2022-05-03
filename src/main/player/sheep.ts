@@ -1,6 +1,8 @@
+import {SheepMemento} from "./sheep-memento";
+
 export class Sheep {
 
-  public static readonly VELOCITY = 15;
+  public static readonly VELOCITY = 5;
 
   private position = {top: 0, left: 0};
 
@@ -22,6 +24,14 @@ export class Sheep {
 
   getPosition() {
     return {...this.position};
+  }
+
+  save() {
+    return new SheepMemento(this.getPosition());
+  }
+
+  restore(sheepMemento: SheepMemento) {
+    this.position = sheepMemento.getPosition();
   }
 
 }
