@@ -15,6 +15,8 @@ export class GameController {
   update() {
     if(this.inputHandler.getKeyDown(KeyCode.LEFT)) {
       this.sheep.moveLeft();
+      const sheepPosition = this.sheep.getPosition();
+      const blocking = document.elementsFromPoint(sheepPosition.left, sheepPosition.top);
     }
     if(this.inputHandler.getKeyDown(KeyCode.RIGHT)) {
       this.sheep.moveRight();
@@ -28,7 +30,7 @@ export class GameController {
 
     const sheepPosition = this.sheep.getPosition();
     this.sheepElement.updatePosition(sheepPosition);
-    this.collectableHandler.detectCollectableCollision(
+    this.collectableHandler.collect(
       sheepPosition,
       this.sheepElement.getSheepDimensions()
     );
