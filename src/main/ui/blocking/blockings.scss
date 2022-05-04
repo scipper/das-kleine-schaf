@@ -1,0 +1,33 @@
+.blocking {
+  width: 100px;
+  height: 100px;
+  border-radius: 20px;
+  background-color: darkgreen;
+  box-shadow: 0 21px 0 -10px saddlebrown;
+  position: absolute;
+
+  &.b-1 {
+    top: 200px;
+    left: 400px;
+  }
+
+  &.b-2 {
+    top: 200px;
+    left: 500px;
+  }
+
+  &.b-3 {
+    top: 600px;
+    left: 650px;
+  }
+
+  &.b-4 {
+    top: 700px;
+    left: 650px;
+  }
+
+  &.b-5 {
+    top: 800px;
+    left: 650px;
+  }
+}

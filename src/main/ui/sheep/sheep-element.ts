@@ -3,17 +3,17 @@ import "./sheep-element.scss";
 export class SheepElement {
 
   private sheepElement: HTMLElement;
+  private dimensions = {width: 0, height: 0};
 
   constructor() {
     this.sheepElement = document.querySelector("#sheep") as HTMLElement;
+    const dimensions = this.sheepElement.getBoundingClientRect();
+    this.dimensions.width = dimensions.width;
+    this.dimensions.height = dimensions.height;
   }
 
   getSheepDimensions() {
-    const dimensions = this.sheepElement.getBoundingClientRect();
-    return {
-      width: dimensions.width,
-      height: dimensions.height
-    };
+    return this.dimensions;
   }
 
   updatePosition(position: { left: number, top: number }) {
