@@ -4,7 +4,7 @@ scale max 1920 width
 top to bottom direction
 
 skinparam nodesep 12
-skinparam ranksep 24
+skinparam ranksep 25
 skinparam monochrome true
 skinparam shadowing false
 skinparam defaultFontName Tahoma
@@ -31,10 +31,11 @@ skinparam component {
 }
 
 
-rectangle "collectable-handler" as _collectable_handler
+rectangle "collision-detector" as _collision_detector
 rectangle "document-input-handler" as _document_input_handler
-rectangle "gameController" as _gameController
+rectangle "game-controller" as _game_controller
 rectangle "input-handler" as _input_handler
+rectangle "item-collector" as _item_collector
 rectangle "key-code" as _key_code
 rectangle "<b>main</b>" as _main
 rectangle "sheep" as _sheep
@@ -43,15 +44,17 @@ rectangle "sheep-element" as _sheep_element
 
 _document_input_handler ---> _input_handler
 _document_input_handler ---> _key_code
-_gameController --> _collectable_handler
-_gameController --> _input_handler
-_gameController --> _key_code
-_gameController --> _sheep
-_gameController --> _sheep_element
+_game_controller --> _collision_detector
+_game_controller --> _input_handler
+_game_controller --> _item_collector
+_game_controller --> _key_code
+_game_controller --> _sheep
+_game_controller --> _sheep_element
 _input_handler --> _key_code
-_main --[thickness=1]> _collectable_handler
+_main --[thickness=1]> _collision_detector
 _main --[thickness=1]> _document_input_handler
-_main -[thickness=1]> _gameController
+_main -[thickness=1]> _game_controller
+_main --[thickness=1]> _item_collector
 _main -[thickness=1]> _sheep
 _main --[thickness=1]> _sheep_element
 

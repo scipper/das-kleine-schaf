@@ -1,7 +1,6 @@
 import {InputHandler} from "./input/input-handler";
 import {KeyCode} from "./input/key-code";
 import {Sheep} from "./player/sheep";
-import {SheepPositionCaretaker} from "./player/sheep-position-caretaker";
 import {CollisionDetector} from "./ui/blocking/collision-detector";
 import {ItemCollector} from "./ui/collectable/item-collector";
 import {SheepElement} from "./ui/sheep/sheep-element";
@@ -12,39 +11,38 @@ export class GameController {
               private sheep: Sheep,
               private sheepElement: SheepElement,
               private itemCollector: ItemCollector,
-              private sheepPositionCaretaker: SheepPositionCaretaker,
               private collisionDetector: CollisionDetector) {
   }
 
   update() {
     const sheepDimensions = this.sheepElement.getSheepDimensions();
-    if(this.inputHandler.getKeyDown(KeyCode.LEFT)) {
-      this.sheepPositionCaretaker.backup();
+    if(this.inputHandler.getKeyDown(KeyCode.LEFT) &&
+      this.collisionDetector.isAllowedToMovement(this.sheep.getPosition(), sheepDimensions, {
+        top: 0,
+        left: -Sheep.VELOCITY
+      })) {
       this.sheep.moveLeft();
-      if(this.collisionDetector.isMovementBlocked(this.sheep.getPosition(), sheepDimensions)) {
-        this.sheepPositionCaretaker.undo();
-      }
     }
-    if(this.inputHandler.getKeyDown(KeyCode.RIGHT)) {
-      this.sheepPositionCaretaker.backup();
+    if(this.inputHandler.getKeyDown(KeyCode.RIGHT) &&
+      this.collisionDetector.isAllowedToMovement(this.sheep.getPosition(), sheepDimensions, {
+        top: 0,
+        left: Sheep.VELOCITY
+      })) {
       this.sheep.moveRight();
-      if(this.collisionDetector.isMovementBlocked(this.sheep.getPosition(), sheepDimensions)) {
-        this.sheepPositionCaretaker.undo();
-      }
     }
-    if(this.inputHandler.getKeyDown(KeyCode.UP)) {
-      this.sheepPositionCaretaker.backup();
+    if(this.inputHandler.getKeyDown(KeyCode.UP) &&
+      this.collisionDetector.isAllowedToMovement(this.sheep.getPosition(), sheepDimensions, {
+        top: -Sheep.VELOCITY,
+        left: 0
+      })) {
       this.sheep.moveUp();
-      if(this.collisionDetector.isMovementBlocked(this.sheep.getPosition(), sheepDimensions)) {
-        this.sheepPositionCaretaker.undo();
-      }
     }
-    if(this.inputHandler.getKeyDown(KeyCode.DOWN)) {
-      this.sheepPositionCaretaker.backup();
+    if(this.inputHandler.getKeyDown(KeyCode.DOWN) &&
+      this.collisionDetector.isAllowedToMovement(this.sheep.getPosition(), sheepDimensions, {
+        top: Sheep.VELOCITY,
+        left: 0
+      })) {
       this.sheep.moveDown();
-      if(this.collisionDetector.isMovementBlocked(this.sheep.getPosition(), sheepDimensions)) {
-        this.sheepPositionCaretaker.undo();
-      }
     }
 
     const sheepPosition = this.sheep.getPosition();
