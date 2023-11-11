@@ -4,11 +4,11 @@
   "description": "Füttere das kleine Schaf",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --include=\"src/main/**/*.ts\" mocha --require ts-node/register \"src/test/**/*.spec.ts\"",
-    "build": "webpack --mode=production --node-env=production",
-    "build:dev": "webpack --mode=development",
-    "watch": "webpack --watch",
-    "serve": "webpack serve",
+    "test": "../node_modules/.bin/nyc --include=\\\\\\\"webui/src/main/**/*.ts\\\\\\\" mocha --require ts-node/register \\\\\\\"src/test/**/*.spec.ts\\\\\\\"",
+    "build": "../node_modules/.bin/webpack --mode=production --node-env=production",
+    "build:dev": "../node_modules/.bin/webpack --mode=development",
+    "watch": "../node_modules/.bin/webpack --watch",
+    "serve": "../node_modules/.bin/webpack serve",
     "generate-graph": "npx arkit"
   },
   "repository": {
